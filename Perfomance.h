@@ -12,6 +12,7 @@ class Perfomance
         std::vector<Actor> actors;
         std::string name;
     public:
+        Perfomance() : name("n/a") { }
         Perfomance(const std::vector<Actor> a, const std::string n) : actors(a), name(n) { }
 
         std::vector<Actor> getActors() const;

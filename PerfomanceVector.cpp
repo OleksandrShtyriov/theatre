@@ -1,6 +1,6 @@
 #include "PerfomanceVector.h"
 
-PerfomanceVector::PerfomanceVector(const std::string filename)
+PerfomanceVector::PerfomanceVector(const std::string filename, const int cap) : Repository(cap)
 {
     std::ifstream fin(filename);
     std::string tempName;
@@ -8,34 +8,28 @@ PerfomanceVector::PerfomanceVector(const std::string filename)
 
     while (fin >> tempName)
     {
-        perfomances.push_back(Perfomance(emptyVector, tempName));
+        (*this) += Perfomance(emptyVector, tempName);
     }
 
     fin.close();
 }
 
-std::vector<Perfomance> PerfomanceVector::getVector() const
-{
-    return perfomances;
-}
-
 Perfomance& PerfomanceVector::operator[](const std::string name)
 {
-    for (int i = 0; i < perfomances.size(); i++)
+    for (int i = 0; i < length; i++)
     {
-        if (perfomances[i].getName() == name)
+        if (elements[i].getName() == name)
         {
-            return perfomances[i];
+            return elements[i];
         }
     }
 
-    std::cout << name << "\n";
     throw -1;
 }
 
 PerfomanceVector PerfomanceVector::operator--(int)
 {
-    perfomances.pop_back();
+    *this -= length - 1;
     return *this;
 }
 

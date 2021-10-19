@@ -4,15 +4,12 @@
 #include <fstream>
 
 #include "Perfomance.h"
+#include "Repository.h"
 
-class PerfomanceVector
+class PerfomanceVector : public Repository<Perfomance>
 {
-    private:
-        std::vector<Perfomance> perfomances;
     public:
-        PerfomanceVector(const std::string filename);
-
-        std::vector<Perfomance> getVector() const;
+        PerfomanceVector(const std::string filename, const int cap = DEFAULT_CAPACITY);
 
         Perfomance& operator [] (const std::string name);
         PerfomanceVector operator -- (int);
