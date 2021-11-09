@@ -13,9 +13,16 @@ class Theatre
     private:
         std::vector<Perfomance> perfomances;
         std::string name;
+        std::string file;
+        std::string perfFile;
     public:
-        Theatre(const std::vector<Perfomance> p, const std::string n) : perfomances(p), name(n) { }
+        Theatre(const std::vector<Perfomance> p, const std::string n) : perfomances(p), name(n), file("none"), perfFile("none") { }
         Theatre(const std::string filename, const std::string perfFilename, const std::string name);
+
+        std::string getFile() const;
+        std::string getPerffile() const;
+
+        void refresh();
 
         std::vector<Perfomance> getPerfomances() const;
         std::string getName() const;

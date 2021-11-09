@@ -25,21 +25,21 @@ enum MaxAnswers
 
 class Menu
 {
-    private:
+    protected:
         Theatre theatre;
         Answer userInput;
 
-        void start();
+        virtual void start();
 
-        void showMainMenu();
+        virtual void showMainMenu();
         void showPerfomancesMenu();
         void showTicketMenu();
 
         void getAnswer(const int index, const int max);
-        void handleUserInput(const int index);
+        virtual void handleUserInput(const int index);
         void getAndHandle(const int index, const int max);
 
-        void handleMainMenu();
+        virtual void handleMainMenu();
         void handlePerfomancesMenu();
         void handleTicketMenu();
 
@@ -47,7 +47,7 @@ class Menu
     public:
         Menu(const Theatre t);
 
-        void run();
+        virtual void run();
 };
 
 #endif

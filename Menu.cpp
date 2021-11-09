@@ -20,6 +20,7 @@ void Menu::showMainMenu()
 
 void Menu::showPerfomancesMenu()
 {
+    theatre.refresh();
     std::vector<Perfomance> perfs = theatre.getPerfomances();
 
     std::cout << "\n\nSelect a perfomance: \n";
@@ -99,6 +100,7 @@ void Menu::handlePerfomancesMenu()
         return;
     }
 
+    theatre.refresh();
     std::cout << '\n' << theatre.getPerfomances()[ans - 1] << "\n\n";
 
     showTicketMenu();
@@ -146,7 +148,6 @@ void Menu::run()
 {
     start();
     showMainMenu();
-    getAnswer(MAIN_MENU, MAIN_MAX);
-    handleUserInput(MAIN_MENU);
+    getAndHandle(MAIN_MENU, MAIN_MAX);
 }
 

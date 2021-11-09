@@ -3,7 +3,7 @@
 using std::string;
 using std::vector;
 
-Theatre::Theatre(const string filename, const string perfFilename, const string name)
+Theatre::Theatre(const string filename, const string perfFilename, const string name) : file(filename), perfFile(perfFilename)
 {
     PerfomanceVector pv = PerfomanceVector(perfFilename);
 
@@ -23,6 +23,24 @@ Theatre::Theatre(const string filename, const string perfFilename, const string 
 
     this->name = name;
     perfomances = pv.getVector();
+}
+
+std::string Theatre::getFile() const
+{
+    return file;
+}
+
+std::string Theatre::getPerffile() const
+{
+    return perfFile;
+}
+
+void Theatre::refresh()
+{
+    if (file != "none")
+    {
+        Theatre(file, perfFile, name);
+    }
 }
 
 vector<Perfomance> Theatre::getPerfomances() const
