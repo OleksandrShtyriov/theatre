@@ -22,6 +22,7 @@ std::string readFromFile(const std::string filename)
 void appendToFile(const std::string filename, const std::string info)
 {
     FILE* file = fopen(filename.c_str(), "a");
+    fputs("\n", file);
     fputs(info.c_str(), file);
 
     fclose(file);

@@ -84,8 +84,6 @@ void AdminMenu::addActorMenu()
 
     for (int i = 0; i < perfs.size(); i++)
     {
-        std::cout << perfs[i].getName();
-        std::cout << perfName;
         if (perfName == perfs[i].getName())
         {
             found = 1;
