@@ -33,18 +33,20 @@ class AdminMenu : public Menu
         void start();
 
         void showMainMenu();
-        void addPerfomanceMenu();
-        void editPerfomanceMenu();
         void addActorMenu();
         void removeActorMenu();
-        void removePerfomanceMenu();
 
         void handleUserInput(const int index);
 
         void handleMainMenu();
         void handleEditMenu();
     public:
+        AdminMenu();
         AdminMenu(const std::string file, const std::string perfFile, Theatre theatre);
+
+        void addPerfomanceMenu();
+        void editPerfomanceMenu();
+        void removePerfomanceMenu();
 
         void run();
 };

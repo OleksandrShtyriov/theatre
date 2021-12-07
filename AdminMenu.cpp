@@ -1,4 +1,7 @@
 #include "AdminMenu.h"
+#include "AdminHandler.h"
+
+AdminMenu::AdminMenu() { }
 
 void AdminMenu::checkPassword()
 {
@@ -149,18 +152,26 @@ void AdminMenu::handleUserInput(const int index)
 
 void AdminMenu::handleMainMenu()
 {
-    switch(userInput.getAnswer(MAIN_ADMIN_MENU))
-    {
-        case 1:
-            addPerfomanceMenu();
-            break;
-        case 2:
-            editPerfomanceMenu();
-            break;
-        case 3:
-            removePerfomanceMenu();
-            break;
-    }
+    AddPerfomanceHandler* add = new AddPerfomanceHandler(*this, ADD);
+    EditPerfomanceHandler* edit = new EditPerfomanceHandler(*this, EDIT);
+    RemovePerfomanceHandler* remove = new RemovePerfomanceHandler(*this, REMOVE);
+
+    edit->setNext(remove);
+    add->setNext(edit);
+
+    add->handle(userInput.getAnswer(MAIN_ADMIN_MENU));
+    //switch(userInput.getAnswer(MAIN_ADMIN_MENU))
+    //{
+    //    case 1:
+    //        addPerfomanceMenu();
+    //        break;
+    //    case 2:
+    //        editPerfomanceMenu();
+    //        break;
+    //    case 3:
+    //        removePerfomanceMenu();
+    //        break;
+    //}
 }
 
 void AdminMenu::handleEditMenu()

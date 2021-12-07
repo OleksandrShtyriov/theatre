@@ -16,6 +16,7 @@ class Theatre
         std::string file;
         std::string perfFile;
     public:
+        Theatre() { }
         Theatre(const std::vector<Perfomance> p, const std::string n) : perfomances(p), name(n), file("none"), perfFile("none") { }
         Theatre(const std::string filename, const std::string perfFilename, const std::string name);
 

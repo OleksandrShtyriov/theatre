@@ -1,5 +1,7 @@
 #include "Menu.h"
 
+Menu::Menu() { }
+
 Menu::Menu(const Theatre t) : theatre(t)
 {
     userInput = Answer(menuCount);

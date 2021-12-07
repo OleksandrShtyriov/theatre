@@ -45,6 +45,7 @@ class Menu
 
         void orderTicket(int perfomance);
     public:
+        Menu();
         Menu(const Theatre t);
 
         virtual void run();
